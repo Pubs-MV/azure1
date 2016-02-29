@@ -47,6 +47,12 @@
       }
     ],
     "steps": [
+    	"name": "SampleClusterConfig",
+        "label": "Cluster settings",
+        "subLabel": {
+          "preValidation": "Configure the cluster",
+          "postValidation": "Done"
+        },
     ],
     "outputs": {
       "adminUsername": "[basics('adminUsername')]",
