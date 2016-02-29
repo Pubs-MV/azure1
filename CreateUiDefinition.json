@@ -51,7 +51,7 @@
         "toolTip": "Source IP prefix for vnet",
         "defaultValue": "0.0.0.0/0",
         "constraints": {
-            "required": true,
+            "required": false,
             "validationMessage": "IP range must be a valid CIDR range of the form x.x.x.x/x"
          },
          "osPlatform": "Linux"
