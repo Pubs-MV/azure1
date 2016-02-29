@@ -37,7 +37,7 @@
         "type": "Microsoft.Compute.UserNameTextBox",
         "label": "Storage Account Name",
         "toolTip": "Storage Account Name",
-        constraints": {
+        "constraints": {
             "required": true,
             "regex": "^[a-z0-9]{3,24}$",
             "validationMessage": "names must be between 3 and 24 characters long, and can contain only numbers and lowercase letters."
