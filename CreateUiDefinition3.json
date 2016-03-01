@@ -60,7 +60,7 @@
         "defaultValue": "199.167.55.50",
         "constraints": {
             "required": true,
-            "regex": "^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\\/(\\d|[1-2]\\d|3[0-2]))?$",
+            "regex": "(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]).){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(/([1-2]d|3[0-2]|d))",
             "validationMessage": "names must be between 3 and 24 characters long, and can contain only numbers and lowercase letters."
          },
          "osPlatform": "Linux"
