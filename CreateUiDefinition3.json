@@ -39,7 +39,7 @@
         "toolTip": "Storage Account Name",
         "constraints": {
             "required": true,
-            "regex": "^[a-z0-9]{3,24}$",
+            "regex": "^[a-z0-9\-]{3,24}$",
             "validationMessage": "names must be between 3 and 24 characters long, and can contain only numbers and lowercase letters."
          },
         "osPlatform": "Linux"
