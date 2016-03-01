@@ -127,7 +127,7 @@
       "dnsNameForPublicIP": "[basics('dnsNameForPublicIP')]",
       "adminUsername": "[basics('adminUsername')]",
       "vmSize": "[steps('SamplePANVMConfig').vmSize]",
-      "adminPassword": "[basics('SSHCredntials').password]",
+      "adminPassword": "[basics('SSHCredntials').password]"
     }
   }
 }
