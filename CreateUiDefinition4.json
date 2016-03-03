@@ -63,7 +63,7 @@
        {
         "name": "dnsNameForPublicIP",
         "type": "Microsoft.Common.TextBox",
-        "label": "publicIpAddress": "Public IP address",
+        "label": "Public IP address",
         "toolTip": "DNS Prefix for the VM public IP addresses.",
         "defaultValue": "publicIP",
         "osPlatform": "Linux"
