@@ -71,10 +71,10 @@
             "domainNameLabel": "DNS Prefix for the VM public IP addresses."
         },
         "defaultValue": {
-            "publicIpAddressName": "publicIP",
+            "publicIpAddressName": "publicIP"
         },
         "options": {
-            "hideNone": true,
+            "hideNone": true
          }
        }
     ],
