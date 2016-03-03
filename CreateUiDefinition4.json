@@ -59,14 +59,6 @@
             "validationMessage": "names must be between 8 and 24 characters long, and can contain numbers, lowercase letters and dash"
          },
         "osPlatform": "Linux"
-       },
-       {
-        "name": "dnsNameForPublicIP",
-        "type": "Microsoft.Common.TextBox",
-        "label": "Public IP address",
-        "toolTip": "DNS Prefix for the VM public IP addresses.",
-        "defaultValue": "publicIP",
-        "osPlatform": "Linux"
        }
     ],
     "steps": [
@@ -223,7 +215,6 @@
       "ipAddressPrefix": "[basics('ipAddressPrefix')]",
       "srcIPInboundNSG": "[basics('srcIPInboundNSG')]",
       "vmName": "[basics('vmName')]",
-      "dnsNameForPublicIP": "[basics('dnsNameForPublicIP')]",
       "adminUsername": "[basics('adminUsername')]",
       "vmSize": "[steps('SamplePANVMConfig').vmSize]",
       "adminPassword": "[basics('SSHCredntials').password]",
