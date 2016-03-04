@@ -47,8 +47,8 @@
        {
         "name": "ipAddressPrefix",
         "type": "Microsoft.Common.TextBox",
-        "label": "Source IP address prefix to use for VNET",
-        "toolTip": "Source IP prefix for vnet",
+        "label": "VNET IP address prefix to use for VNET",
+        "toolTip": "VNET IP prefix for vnet",
         "defaultValue": "192.168",
          "osPlatform": "Linux"
        },
@@ -120,20 +120,20 @@
             "name": "imageSku",
             "type": "Microsoft.Common.DropDown",
             "label": "Image SKU for PANW firewall",
-            "defaultValue": "VM Series BOYL",
+            "defaultValue": "VM Series BYOL",
             "toolTip": "Image SKU for PANW firewall",
             "constraints": {
               "allowedValues": [
                 {
-                  "label": "VM Series BOYL",
+                  "label": "VM Series BYOL",
 		  "value": "vmseriesboyl"
                 },
                 {
-                  "label": "VM Series PreLicensed1",
+                  "label": "VM Series Bundle1",
 		  "value": "vmseriesbundle1"
                 },
                 {
-                  "label": "VM Series PreLicensed2",
+                  "label": "VM Series Bundle2",
 		  "value": "vmseriesbundle2"
                 }
               ],
@@ -160,13 +160,13 @@
     ],
     "outputs": {
       "newStorageAccount": "[basics('newStorageAccount')]",
-      "ipAddressPrefix": "[basics('ipAddressPrefix')]",
-      "srcIPInboundNSG": "[basics('srcIPInboundNSG')]",
-      "vmName": "[basics('vmName')]",
       "dnsNameForPublicIP": "[basics('dnsNameForPublicIP')]",
+      "vmName": "[basics('vmName')]",
       "adminUsername": "[basics('adminUsername')]",
-      "vmSize": "[steps('SamplePANVMConfig').vmSize]",
       "adminPassword": "[basics('SSHCredntials').password]",
+      "vmSize": "[steps('SamplePANVMConfig').vmSize]",
+      "srcIPInboundNSG": "[basics('srcIPInboundNSG')]",
+      "ipAddressPrefix": "[basics('ipAddressPrefix')]",
       "imageOffer": "[steps('SamplePANVMConfig').imageOffer]",
       "imageSku": "[steps('SamplePANVMConfig').imageSku]"
     }
