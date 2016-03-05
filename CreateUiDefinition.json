@@ -31,35 +31,72 @@
               "hideConfirmation": false
          },
          "osPlatform": "Linux"
-       },
-       {
-        "name": "newStorageAccount",
-        "type": "Microsoft.Common.TextBox",
-        "label": "Storage Account Name",
-        "toolTip": "Storage Account Name",
-        "constraints": {
-            "required": true,
-            "regex": "^[a-z0-9](?:[a-z0-9]|(\\-(?!\\-))){8,24}[a-z0-9]$|^\\$root$",
-            "validationMessage": "names must be between 8 and 24 characters long, and can contain numbers, lowercase letters and dash"
-         },
-        "osPlatform": "Linux"
-       },
-       {
-        "name": "ipAddressPrefix",
-        "type": "Microsoft.Common.TextBox",
-        "label": "VNET IP address prefix to use for VNET",
-        "toolTip": "VNET IP prefix for vnet",
-        "defaultValue": "192.168",
-         "osPlatform": "Linux"
-       },
-       {
-        "name": "srcIPInboundNSG",
-        "type": "Microsoft.Common.TextBox",
-        "label": "NSG InBound source-IP",
-        "toolTip": "NSG InBound source-IP",
-        "defaultValue": "199.167.55.50/32",
-         "osPlatform": "Linux"
-       },
+       }
+    ],
+    "steps": [
+      {
+        "name": "panvnetconfig",
+        "label": "Palo Alto Networks VM Storage and Networking config",
+        "subLabel": {
+          "preValidation": "Configure PA-VM",
+          "postValidation": "Done"
+        },
+        "bladeTitle": "Palo Alto Networks VM Storage and Networking config",
+        "elements": [
+          {
+             {
+               "name": "newStorageAccount",
+               "type": "Microsoft.Storage.StorageAccountSelector",
+               "label": "Storage Account Name",
+               "defaultValue": {
+                   "type": "Standard_LRS"
+               }
+            },
+            {
+               "name": "ipAddressPrefix",
+               "type": "Microsoft.Common.TextBox",
+               "label": "VNET IP address prefix to use for VNET",
+               "toolTip": "VNET IP prefix for vnet",
+               "defaultValue": "192.168",
+               "osPlatform": "Linux"
+            },
+            {
+               "name": "srcIPInboundNSG",
+               "type": "Microsoft.Common.TextBox",
+               "label": "NSG InBound source-IP",
+               "toolTip": "NSG InBound source-IP",
+               "defaultValue": "199.167.55.50/32",
+               "osPlatform": "Linux"
+            }
+          }]
+      },
+      {
+        "name": "SamplePANVMConfig",
+        "label": "Palo Alto Networks VM config",
+        "subLabel": {
+          "preValidation": "Configure PA-VM",
+          "postValidation": "Done"
+        },
+        "bladeTitle": "Palo Alto Networks VM config",
+        "elements": [
+         {
+            "name": "dnsNameForPublicIP",
+            "type": "Microsoft.Network.PublicIpAddressCombo",
+            "label": {
+                "publicIpAddress": "Public IP address",
+                "domainNameLabel": "DNS Prefix"
+            },
+            "toolTip": {
+                "domainNameLabel": "DNS Prefix for the VM public IP addresses."
+            },
+            "defaultValue": {
+                "publicIpAddressName": "publicIP",
+                "domainNameLabel": "provide_a_unique_name"
+            },
+            "options": {
+                "hideNone": true
+            }
+          },
        {
         "name": "vmName",
         "type": "Microsoft.Common.TextBox",
@@ -70,31 +107,8 @@
             "regex": "^[a-z0-9](?:[a-z0-9]|(\\-(?!\\-))){8,24}[a-z0-9]$|^\\$root$",
             "validationMessage": "names must be between 8 and 24 characters long, and can contain numbers, lowercase letters and dash"
          },
-        "osPlatform": "Linux"
+         "osPlatform": "Linux"
        },
-       {
-        "name": "dnsNameForPublicIP",
-        "type": "Microsoft.Common.TextBox",
-        "label": "DNS name for public IP of the mgmt interface",
-        "toolTip": "DNS name",
-        "constraints": {
-            "required": true,
-            "regex": "^[a-z0-9](?:[a-z0-9]|(\\-(?!\\-))){8,24}[a-z0-9]$|^\\$root$",
-            "validationMessage": "names must be between 8 and 24 characters long, and can contain numbers, lowercase letters and dash"
-        },
-        "osPlatform": "Linux"
-       }
-    ],
-    "steps": [
-      {
-        "name": "SamplePANVMConfig",
-        "label": "Palo Alto Networks VM config",
-        "subLabel": {
-          "preValidation": "Configure PA-VM",
-          "postValidation": "Done"
-        },
-        "bladeTitle": "Palo Alto Networks VM config",
-        "elements": [
           {
             "name": "vmSize",
             "type": "Microsoft.Compute.SizeSelector",
@@ -159,14 +173,14 @@
       }
     ],
     "outputs": {
-      "newStorageAccount": "[basics('newStorageAccount')]",
-      "dnsNameForPublicIP": "[basics('dnsNameForPublicIP')]",
-      "vmName": "[basics('vmName')]",
+      "newStorageAccount": "[steps('panvnetconfig').newStorageAccount]"
+      "dnsNameForPublicIP": "[steps('SamplePANVMConfig').dnsNameForPublicIP]",
+      "vmName": "[steps('SamplePANVMConfig').vmName]",
       "adminUsername": "[basics('adminUsername')]",
       "adminPassword": "[basics('SSHCredntials').password]",
       "vmSize": "[steps('SamplePANVMConfig').vmSize]",
-      "srcIPInboundNSG": "[basics('srcIPInboundNSG')]",
-      "ipAddressPrefix": "[basics('ipAddressPrefix')]",
+      "ipAddressPrefix": "[steps('panvnetconfig').vnetSpec.addressPrefix]",
+      "srcIPInboundNSG": "[steps('panvnetconfig').srcIPInboundNSG]",
       "imageOffer": "[steps('SamplePANVMConfig').imageOffer]",
       "imageSku": "[steps('SamplePANVMConfig').imageSku]"
     }
