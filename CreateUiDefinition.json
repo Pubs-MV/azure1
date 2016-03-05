@@ -43,8 +43,7 @@
         },
         "bladeTitle": "Palo Alto Networks VM Storage and Networking config",
         "elements": [
-          {
-             {
+            {
                "name": "newStorageAccount",
                "type": "Microsoft.Storage.StorageAccountSelector",
                "label": "Storage Account Name",
@@ -68,7 +67,7 @@
                "defaultValue": "199.167.55.50/32",
                "osPlatform": "Linux"
             }
-          }]
+          ]
       },
       {
         "name": "SamplePANVMConfig",
@@ -173,7 +172,7 @@
       }
     ],
     "outputs": {
-      "newStorageAccount": "[steps('panvnetconfig').newStorageAccount]"
+      "newStorageAccount": "[steps('panvnetconfig').newStorageAccount]",
       "dnsNameForPublicIP": "[steps('SamplePANVMConfig').dnsNameForPublicIP]",
       "vmName": "[steps('SamplePANVMConfig').vmName]",
       "adminUsername": "[basics('adminUsername')]",
