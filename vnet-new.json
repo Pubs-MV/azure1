@@ -1,0 +1,72 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+        "virtualNetworkName": {
+            "type": "string",
+            "metadata": {
+               "description": "virtualNetworkName"
+            }
+        },
+        "virtualNetworkAddressPrefix": {
+            "type": "string",
+            "metadata": {
+               "description": "virtualNetworkAddressPrefix"
+            }
+        },
+        "subnetName": {
+            "type": "string",
+            "metadata": {
+               "description": "Subnet for the Mgmt subnet"
+            }
+        },
+        "subnetPrefix": {
+            "type": "string",
+            "metadata": {
+                "description": "Mgmt CIDR"
+            }
+        },
+        "nameNSG": {
+            "type": "string",
+            "metadata": {
+                "description": "Name of NSG"
+            }
+        }
+  },
+  "variables" : {
+    "templateAPIVersion": "2015-01-01",
+    "resourceAPIVersion": "2015-06-15",
+    "location": "[resourceGroup().location]",
+    "virtualNetworkId" : "[resourceId('Microsoft.Network/virtualNetworks',parameters('virtualNetworkName'))]",
+    "subnetRef" : "[concat(variables('virtualNetworkId'),'/subnets/',parameters('subnetName'))]"
+  },
+  "resources": [
+    {
+      "apiVersion": "[variables('resourceAPIVersion')]",
+      "type": "Microsoft.Network/virtualNetworks",
+      "name": "[parameters('virtualNetworkName')]",
+      "location": "[variables('location')]",
+      "properties": {
+        "addressSpace": {
+          "addressPrefixes": [
+            "[parameters('virtualNetworkAddressPrefix')]"
+          ]
+        },
+        "subnets": [
+          {
+            "name": "[parameters('subnetName')]",
+            "properties": {
+              "addressPrefix": "[parameters('subnetPrefix')]"
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "outputs": {
+    "subnetRef": {
+      "value": "[variables('subnetRef')]",
+      "type": "string"
+    }
+  }
+}
