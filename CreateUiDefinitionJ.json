@@ -142,8 +142,8 @@
       "vmSize": "[steps('VMSeriesConfig').vmSize]",
       "ipAddressPrefix": "[steps('panvnetconfig').ipAddressPrefix]",
       "srcIPInboundNSG": "[steps('panvnetconfig').srcIPInboundNSG]",
-      "imageSku": "[steps('VMSeriesConfig').imageReference.sku]",
-      "imageOffer": "[steps('VMSeriesConfig').imageReference.offer]"
+      "imageSku": "[vmseriesbyol]",
+      "imageOffer": "[vm-series-testpass1-preview]"
     }
   }
 }
