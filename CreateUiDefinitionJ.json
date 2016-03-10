@@ -123,25 +123,22 @@
                 "Standard_D4"
               ]
             },
-            "osPlatform": "Linux",
-            "imageReference": {
-              "publisher": "paloaltonetworks",
-              "offer": "vm-series-testpass1-preview",
-              "sku": "vmseriesbyol"
-            }
+            "osPlatform": "Linux"
           }
         ]
       }
     ],
     "outputs": {
       "newStorageAccount": "[steps('panvnetconfig').newStorageAccount.name]",
-      "dnsNameForPublicIP": "[steps('VMSeriesConfig').dnsNameForPublicIP]",
+      "dnsNameForPublicIP": "[steps('VMSeriesConfig').dnsNameForPublicIP.domainNameLabel]",
       "vmName": "[steps('VMSeriesConfig').vmName]",
       "adminUsername": "[basics('adminUsername')]",
       "adminPassword": "[basics('SSHCredntials').password]",
       "vmSize": "[steps('VMSeriesConfig').vmSize]",
       "ipAddressPrefix": "[steps('panvnetconfig').ipAddressPrefix]",
-      "srcIPInboundNSG": "[steps('panvnetconfig').srcIPInboundNSG]"
+      "srcIPInboundNSG": "[steps('panvnetconfig').srcIPInboundNSG]",
+      "imageSku": "vmseriesbyol",
+      "imageOffer": "vm-series-testpass1-preview"
     }
   }
 }
