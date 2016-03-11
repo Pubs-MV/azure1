@@ -111,11 +111,8 @@
           {
             "name": "vmSize",
             "type": "Microsoft.Compute.SizeSelector",
-            "label": {
-              "offer": "vm-series-testpass1-preview",
-              "sku": "vmseriesbyol"
-            },
-	    "toolTip": "Size of Azure virtual machine to provision for VM-Series",
+            "label": "Virtual machine size",
+            "toolTip": "Size of Azure virtual machine to provision for VM-Series",
             "recommendedSizes": [
               "Standard_D3",
               "Standard_D4"
@@ -126,7 +123,12 @@
                 "Standard_D4"
               ]
             },
-            "osPlatform": "Linux"
+            "osPlatform": "Linux",
+            "imageReference": {
+              "publisher": "paloaltonetworks",
+              "offer": "vm-series-testpass1-preview",
+              "sku": "vmseriesbyol"
+            }
           }
         ]
       }
@@ -139,9 +141,7 @@
       "adminPassword": "[basics('SSHCredntials').password]",
       "vmSize": "[steps('VMSeriesConfig').vmSize]",
       "ipAddressPrefix": "[steps('panvnetconfig').ipAddressPrefix]",
-      "srcIPInboundNSG": "[steps('panvnetconfig').srcIPInboundNSG]",
-      "imageSku": "[steps('VMSeriesConfig').vmSize.sku]",
-      "imageOffer": "[steps('VMSeriesConfig').vmSize.offer]"
+      "srcIPInboundNSG": "[steps('panvnetconfig').srcIPInboundNSG]"
     }
   }
 }
