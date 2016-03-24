@@ -126,6 +126,7 @@
                 "Standard_D4"
               ]
             },
+	    "osPlatform": "Linux",
             "imageReference": {
               "publisher": "paloaltonetworks",
               "offer": "vmseries-preview",
