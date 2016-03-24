@@ -85,6 +85,11 @@
                 "publicIpAddress": "Public IP address",
                 "domainNameLabel": "DNS Name"
             },
+            "constraints": {
+              "required": {
+                       "domainNameLabel": true
+                     }
+            },
             "toolTip": {
                 "domainNameLabel": "Unique DNS name prefix for public IP of management interface (eth0)"
             },
@@ -93,7 +98,8 @@
                 "domainNameLabel": ""
             },
             "options": {
-                "hideNone": true
+                "hideNone": true,
+		"hideExisting" : true
             }
           },
        {
