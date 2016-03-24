@@ -7,7 +7,8 @@
         "name": "adminUsername",
         "type": "Microsoft.Compute.UserNameTextBox",
         "label": "Username",
-        "toolTip": "Username for Palo Alto Networks VM-Series next-generation firewall"
+        "toolTip": "Username for Palo Alto Networks VM-Series next-generation firewall",
+	"osPlatform": "Linux"
       },
       {
         "name": "SSHCredntials",
@@ -28,7 +29,8 @@
               },
          "options": {
               "hideConfirmation": false
-         }
+         },
+	 "osPlatform": "Linux"
        }
     ],
     "steps": [
