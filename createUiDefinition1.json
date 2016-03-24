@@ -56,16 +56,14 @@
                "type": "Microsoft.Common.TextBox",
                "label": "VNET IP address space (/16)",
                "toolTip": "Creates a new VNET called fwVNET with provided private IP prefix (RFC 1918), and creates new subnets 0.0/24 (Mgmt), 1.0/24 (Untrust), 2.0/24 (Trust).",
-               "defaultValue": "192.168",
-               "osPlatform": "Linux"
+               "defaultValue": "192.168"
             },
             {
                "name": "srcIPInboundNSG",
                "type": "Microsoft.Common.TextBox",
                "label": "Network Security Group: inbound source IP",
                "toolTip": "Provide your source IP address (or range) to restrict access to public interfaces",
-               "defaultValue": "0.0.0.0/0",
-               "osPlatform": "Linux"
+               "defaultValue": "0.0.0.0/0"
             }
           ]
       },
@@ -111,8 +109,7 @@
             "required": true,
             "regex": "^[a-z0-9]{8,24}$",
             "validationMessage": "Cluster names must be between 8 and 24 characters long, and can contain only numbers and lowercase letters."
-         },
-         "osPlatform": "Linux"
+         }
        },
           {
             "name": "vmSize",
@@ -129,7 +126,6 @@
                 "Standard_D4"
               ]
             },
-            "osPlatform": "Linux",
             "imageReference": {
               "publisher": "paloaltonetworks",
               "offer": "vmseries-preview",
