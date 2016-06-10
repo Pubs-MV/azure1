@@ -7,7 +7,7 @@
         "name": "adminUsername",
         "type": "Microsoft.Compute.UserNameTextBox",
         "label": "Username",
-        "toolTip": "Username for Palo Alto Networks VM-Series next-generation firewall",
+        "toolTip": "Admin username for Palo Alto Networks VM-Series next-generation firewall",
 	"osPlatform": "Linux"
       },
       {
@@ -43,12 +43,15 @@
         },
         "bladeTitle": "Storage and Networking",
         "elements": [
-            {
+            { 
                "name": "newStorageAccount",
                "type": "Microsoft.Storage.StorageAccountSelector",
                "label": "Storage Account Name",
                "defaultValue": {
                    "type": "Standard_LRS"
+               },
+               "constraints": {
+                   "allowedTypes": ["Standard_LRS","Standard_GRS","Standard_RAGRS"]
                }
             },
 	    {
@@ -63,10 +66,10 @@
                    "subnets": ""
                },
                "options": {
-		"hideExisting" : true
+		"hideExisting" : false
                },
                "defaultValue": {
-                   "name": "panVnet",
+                   "name": "fwVNET",
                    "addressPrefixSize": "/16"
                },
                "constraints": {
@@ -115,11 +118,11 @@
                "name": "srcIPInboundNSG",
                "type": "Microsoft.Common.TextBox",
                "label": "Network Security Group: inbound source IP",
-               "toolTip": "Provide your source IP address (or range) to restrict access to public interfaces",
+               "toolTip": "Your source IP address (or range) to restrict access to public interfaces. Sets DefaultNSG.",
                "defaultValue": "0.0.0.0/0",
         	"constraints": {
             	    "required": true,
-            	    "regex": "(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]).){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(/([1-2]d|3[0-2]|d))",
+            	    "regex": "(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]).){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\/([0-9]|[1-2][0-9]|3[0-2]))$",
             	    "validationMessage": "0.0.0.0/0 or x.x.x.x/x"
          	}
             }
@@ -162,11 +165,11 @@
         "name": "vmName",
         "type": "Microsoft.Common.TextBox",
         "label": "VM name of VM-Series",
-        "toolTip": "VM name in resource group after deployment",
+        "toolTip": "VM name and hostname in resource group after deployment",
         "constraints": {
             "required": true,
             "regex": "^[a-z0-9]{8,24}$",
-            "validationMessage": "Cluster names must be between 8 and 24 characters long, and can contain only numbers and lowercase letters."
+            "validationMessage": "VM names must be between 8 and 24 characters long, and can contain only numbers and lowercase letters."
          }
        },
           {
@@ -181,13 +184,16 @@
             "constraints": {
               "allowedSizes": [
                 "Standard_D3",
-                "Standard_D4"
-              ]
+                "Standard_D3_v2",
+                "Standard_D4",
+                "Standard_D4_v2",
+                "Standard_A4"                  
+                ]
             },
 	    "osPlatform": "Linux",
             "imageReference": {
               "publisher": "paloaltonetworks",
-              "offer": "vmseries-preview",
+              "offer": "vmseries1",
               "sku": "byol"
             }
           }
@@ -195,18 +201,25 @@
       }
     ],
     "outputs": {
-      "newStorageAccount": "[steps('panvnetconfig').newStorageAccount.name]",
+      "location": "[location()]",
+      "storageAccountName": "[steps('panvnetconfig').newStorageAccount.name]",
       "storageAccountType": "[steps('panvnetconfig').newStorageAccount.type]",
       "storageAccountNewOrExisting" : "[steps('panvnetconfig').newStorageAccount.newOrExisting]",
-      "existingStorageAccountRG": "[steps('panvnetconfig').newStorageAccount.resourceGroup]",
-      "dnsNameForPublicIP": "[steps('VMSeriesConfig').dnsNameForPublicIP.domainNameLabel]",
+      "storageAccountExistingRG": "[steps('panvnetconfig').newStorageAccount.resourceGroup]",
+      "publicIPAddressName": "[steps('VMSeriesConfig').dnsNameForPublicIP.domainNameLabel]",
+      "PublicIPNewOrExisting": "[steps('VMSeriesConfig').dnsNameForPublicIP.newOrExistingOrNone]",
+      "PublicIPRGName": "[steps('VMSeriesConfig').dnsNameForPublicIP.resourceGroup]",
       "vmName": "[steps('VMSeriesConfig').vmName]",
       "adminUsername": "[basics('adminUsername')]",
       "adminPassword": "[basics('SSHCredntials').password]",
+      "authenticationType": "[basics('SSHCredntials').authenticationType]",
+      "sshKey": "[basics('SSHCredntials').sshPublicKey]",
       "vmSize": "[steps('VMSeriesConfig').vmSize]",
       "srcIPInboundNSG": "[steps('panvnetconfig').srcIPInboundNSG]",
       "virtualNetworkName": "[steps('panvnetconfig').vnetSpec.name]",
+      "virtualNetworkExistingRGName": "[steps('panvnetconfig').vnetSpec.resourceGroup]",
       "virtualNetworkAddressPrefix": "[steps('panvnetconfig').vnetSpec.addressPrefix]",
+      "vnetNewOrExisting": "[steps('panvnetconfig').vnetSpec.newOrExisting]",
       "subnet0Name": "[steps('panvnetconfig').vnetSpec.subnets.subnet0.name]",
       "subnet1Name": "[steps('panvnetconfig').vnetSpec.subnets.subnet1.name]",
       "subnet2Name": "[steps('panvnetconfig').vnetSpec.subnets.subnet2.name]",
