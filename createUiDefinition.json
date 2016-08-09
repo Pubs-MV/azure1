@@ -158,7 +158,7 @@
             },
             "options": {
                 "hideNone": true,
-		"hideExisting" : true
+		"hideExisting" : false
             }
           },
        {
