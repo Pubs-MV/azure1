@@ -1,5 +1,5 @@
 {
-  "handler": "Microsoft.Compute.MultiVm",
+  "handler": "Microsoft.Compute.MultiVm", 
   "version": "0.0.1-preview",
   "parameters": {
     "basics": [
@@ -7,7 +7,7 @@
         "name": "adminUsername",
         "type": "Microsoft.Compute.UserNameTextBox",
         "label": "Username",
-        "toolTip": "Admin username for Palo Alto Networks VM-Series next-generation firewall",
+        "toolTip": "Admin username for VM-Series",
 	"osPlatform": "Linux"
       },
       {
@@ -38,12 +38,12 @@
         "name": "panvnetconfig",
         "label": "Storage and Networking",
         "subLabel": {
-          "preValidation": "Configure PA-VM",
+          "preValidation": "New or existing resources",
           "postValidation": "Done"
         },
         "bladeTitle": "Storage and Networking",
         "elements": [
-            { 
+            {
                "name": "newStorageAccount",
                "type": "Microsoft.Storage.StorageAccountSelector",
                "label": "Storage Account Name",
@@ -62,7 +62,7 @@
                    "subnets": "Subnets"
                },
                "toolTip": {
-                   "virtualNetwork": "",
+                   "virtualNetwork": "To use an existing VNET, 3 subnets must already exist for Mgmt, Untrust and Trust. For a new VNET, the template will create them.",
                    "subnets": ""
                },
                "options": {
@@ -73,7 +73,7 @@
                    "addressPrefixSize": "/16"
                },
                "constraints": {
-                   "minAddressPrefixSize": "/16"
+                   "minAddressPrefixSize": "/24"
                },
                "subnets": {
                    "subnet0": {
@@ -83,7 +83,7 @@
                            "addressPrefixSize": "/24"
                        },
                        "constraints": {
-                           "minAddressPrefixSize": "/24",
+                           "minAddressPrefixSize": "/29",
                            "minAddressCount": 1,
                            "requireContiguousAddresses": true
                        }
@@ -95,7 +95,7 @@
                            "addressPrefixSize": "/24"
                        },
                        "constraints": {
-                           "minAddressPrefixSize": "/24",
+                           "minAddressPrefixSize": "/29",
                            "minAddressCount": 4,
                            "requireContiguousAddresses": true
                        }
@@ -107,7 +107,7 @@
                            "addressPrefixSize": "/24"
                        },
                        "constraints": {
-                           "minAddressPrefixSize": "/24",
+                           "minAddressPrefixSize": "/29",
                            "minAddressCount": 4,
                            "requireContiguousAddresses": true
                        }
@@ -132,7 +132,7 @@
         "name": "VMSeriesConfig",
         "label": "VM-Series Configuration",
         "subLabel": {
-          "preValidation": "Configure PA-VM",
+          "preValidation": "VM's size, name and DNS name ",
           "postValidation": "Done"
         },
         "bladeTitle": "VM-Series Configuration",
