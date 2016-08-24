@@ -51,7 +51,7 @@
                    "type": "Standard_LRS"
                },
                "constraints": {
-                   "allowedTypes": ["Standard_LRS","Standard_GRS","Standard_RAGRS","Premium_LRS"]
+                   "allowedTypes": ["Standard_LRS","Standard_GRS","Standard_RAGRS"]
                }
             },
 	    {
@@ -157,32 +157,8 @@
                 "domainNameLabel": ""
             },
             "options": {
-                "hideNone": false,
+                "hideNone": true,
 		"hideExisting" : true
-            }
-          },
-         { 
-            "name": "UntrustPublicIP",
-            "type": "Microsoft.Network.PublicIpAddressCombo",
-            "label": {
-                "publicIpAddress": "Public IP address",
-                "domainNameLabel": "DNS Name"
-            },
-            "constraints": {
-              "required": {
-                       "domainNameLabel": true
-                     }
-            },
-            "toolTip": {
-                "domainNameLabel": "Unique DNS name prefix for public IP of untrust interface (eth1)"
-            },
-            "defaultValue": {
-                "publicIpAddressName": "fwUntrustPublicIP",
-                "domainNameLabel": ""
-            },
-            "options": {
-                "hideNone": false,
-                "hideExisting" : true
             }
           },
        {
@@ -190,17 +166,6 @@
         "type": "Microsoft.Common.TextBox",
         "label": "VM name of VM-Series",
         "toolTip": "VM name and hostname in resource group after deployment",
-        "constraints": {
-            "required": true,
-            "regex": "^[a-z0-9]{8,24}$",
-            "validationMessage": "VM names must be between 8 and 24 characters long, and can contain only numbers and lowercase letters."
-         }
-       },
-       {
-        "name": "Email",
-        "type": "Microsoft.Common.TextBox",
-        "label": "Customers Email-ID",
-        "toolTip": "Customers Email-ID",
         "constraints": {
             "required": true,
             "regex": "^[a-z0-9]{8,24}$",
@@ -222,9 +187,7 @@
                 "Standard_D3_v2",
                 "Standard_D4",
                 "Standard_D4_v2",
-                "Standard_D5_v2",  
-                "Standard_D14_v2",  
-                "Standard_A4"
+                "Standard_A4"                  
                 ]
             },
 	    "osPlatform": "Linux",
@@ -243,14 +206,10 @@
       "storageAccountType": "[steps('panvnetconfig').newStorageAccount.type]",
       "storageAccountNewOrExisting" : "[steps('panvnetconfig').newStorageAccount.newOrExisting]",
       "storageAccountExistingRG": "[steps('panvnetconfig').newStorageAccount.resourceGroup]",
-      "MgmtPublicIPAddressName": "[steps('VMSeriesConfig').dnsNameForPublicIP.domainNameLabel]",
-      "MgmtPublicIP": "[steps('VMSeriesConfig').dnsNameForPublicIP.newOrExistingOrNone]",
-      "MgmtPublicIPRGName": "[steps('VMSeriesConfig').dnsNameForPublicIP.resourceGroup]",
-      "UntrustPublicIPAddressName": "[steps('VMSeriesConfig').UntrustPublicIP.domainNameLabel]",
-      "UntrustPublicIP": "[steps('VMSeriesConfig').UntrustPublicIP.newOrExistingOrNone]",
-      "UntrustPublicIPRGName": "[steps('VMSeriesConfig').UntrustPublicIP.resourceGroup]",
+      "publicIPAddressName": "[steps('VMSeriesConfig').dnsNameForPublicIP.domainNameLabel]",
+      "PublicIPNewOrExisting": "[steps('VMSeriesConfig').dnsNameForPublicIP.newOrExistingOrNone]",
+      "PublicIPRGName": "[steps('VMSeriesConfig').dnsNameForPublicIP.resourceGroup]",
       "vmName": "[steps('VMSeriesConfig').vmName]",
-      "Email": "[steps('VMSeriesConfig').Email]",
       "adminUsername": "[basics('adminUsername')]",
       "adminPassword": "[basics('SSHCredntials').password]",
       "authenticationType": "[basics('SSHCredntials').authenticationType]",
