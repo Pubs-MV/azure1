@@ -239,8 +239,8 @@
             "toolTip": "Customer Email-ID",
             "constraints": {
                "required": true,
-               "regex": "^[a-z0-9]{8,24}$",
-               "validationMessage": "Email-ID must be in the form xyz@abc.mno"
+               "regex": "^[A-Z0-9._%+-]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$",
+               "validationMessage": "Email-ID must be in the form name@domain"
             }
           }
         ]
@@ -292,10 +292,10 @@
             "type": "Microsoft.Common.TextBox",
             "label": "Number of Update domains in the Availability Set",
             "toolTip": "Number of Update domains in the Availability Set",
-            "defaultValue": "5",
+            "defaultValue": "05",
             "constraints": {
                "required": true,
-               "regex": "^([0-1][1-9])",
+               "regex": "^([0-1]?[0-9]|20)$"
                "validationMessage": "Number of Update domains must be between 1 to 19"
             },
             "visible": true
