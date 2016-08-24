@@ -239,7 +239,7 @@
             "toolTip": "Customer Email-ID",
             "constraints": {
                "required": true,
-               "regex": "^[A-Z0-9._%+-]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$",
+               "regex": "^[A-Z]",
                "validationMessage": "Email-ID must be in the form name@domain"
             }
           }
