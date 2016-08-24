@@ -239,7 +239,7 @@
             "toolTip": "Customer Email-ID",
             "constraints": {
                "required": true,
-               "regex": "^[A-Z]",
+               "regex": "^[a-z0-9]{8,24}$",
                "validationMessage": "Email-ID must be in the form name@domain"
             }
           }
@@ -295,7 +295,7 @@
             "defaultValue": "05",
             "constraints": {
                "required": true,
-               "regex": "^([0-1]?[0-9]|20)$"
+               "regex": "^[1-20]",
                "validationMessage": "Number of Update domains must be between 1 to 19"
             },
             "visible": true
