@@ -284,7 +284,8 @@
                "required": true,
                "regex": "^[1-3]",
                "validationMessage": "Number of Fault domains must be between 1 to 3"
-            }
+            },
+            "visible": true
           },
           {
             "name": "ASUpdateDomains",
@@ -294,9 +295,10 @@
             "defaultValue": "5",
             "constraints": {
                "required": true,
-               "regex": "^[1-20]",
-               "validationMessage": "Number of Update domains must be between 1 to 20"
-            }
+               "regex": "^([0-1][1-9])",
+               "validationMessage": "Number of Update domains must be between 1 to 19"
+            },
+            "visible": true
           }
         ]
       }
@@ -307,9 +309,12 @@
       "storageAccountType": "[steps('panvnetconfig').newStorageAccount.type]",
       "storageAccountNewOrExisting" : "[steps('panvnetconfig').newStorageAccount.newOrExisting]",
       "storageAccountExistingRG": "[steps('panvnetconfig').newStorageAccount.resourceGroup]",
-      "publicIPAddressName": "[steps('VMSeriesConfig').dnsNameForPublicIP.domainNameLabel]",
-      "PublicIPNewOrExisting": "[steps('VMSeriesConfig').dnsNameForPublicIP.newOrExistingOrNone]",
-      "PublicIPRGName": "[steps('VMSeriesConfig').dnsNameForPublicIP.resourceGroup]",
+      "MgmtPublicIPAddressName": "[steps('VMSeriesConfig').dnsNameForPublicIP.domainNameLabel]",
+      "MgmtPublicIP": "[steps('VMSeriesConfig').dnsNameForPublicIP.newOrExistingOrNone]",
+      "MgmtPublicIPRGName": "[steps('VMSeriesConfig').dnsNameForPublicIP.resourceGroup]",
+      "UntrustPublicIPAddressName": "[steps('VMSeriesConfig').UntrustdnsNameForPublicIP.domainNameLabel]",
+      "UntrustPublicIP": "[steps('VMSeriesConfig').UntrustdnsNameForPublicIP.newOrExistingOrNone]",
+      "UntrustPublicIPRGName": "[steps('VMSeriesConfig').UntrustdnsNameForPublicIP.resourceGroup]",
       "vmName": "[steps('VMSeriesConfig').vmName]",
       "adminUsername": "[basics('adminUsername')]",
       "adminPassword": "[basics('SSHCredntials').password]",
@@ -329,7 +334,8 @@
       "subnet2Prefix": "[steps('panvnetconfig').vnetSpec.subnets.subnet2.addressPrefix]",
       "subnet0StartAddress": "[steps('panvnetconfig').vnetSpec.subnets.subnet0.startAddress]",
       "subnet1StartAddress": "[steps('panvnetconfig').vnetSpec.subnets.subnet1.startAddress]",
-      "subnet2StartAddress": "[steps('panvnetconfig').vnetSpec.subnets.subnet2.startAddress]"
+      "subnet2StartAddress": "[steps('panvnetconfig').vnetSpec.subnets.subnet2.startAddress]",
+      "Email": "[steps('VMSeriesConfig').Email]"
     }
   }
 }
