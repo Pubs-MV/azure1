@@ -31,7 +31,25 @@
               "hideConfirmation": false
          },
 	 "osPlatform": "Linux"
-       }
+       },
+{
+  "name": "VMSeriesConfigAS",
+  "type": "Microsoft.Common.Section",
+  "label": "Availability Set configuration for VM-Series",
+  "elements": [
+    {
+      "name": "element1",
+      "type": "Microsoft.Common.TextBox",
+      "label": "Some text box 1"
+    },
+    {
+      "name": "element2",
+      "type": "Microsoft.Common.TextBox",
+      "label": "Some text box 2"
+    }
+  ],
+  "visible": true
+}
     ],
     "steps": [
       {
@@ -244,25 +262,7 @@
             }
           }
         ]
-      },
-{
-  "name": "VMSeriesConfigAS",
-  "type": "Microsoft.Common.Section",
-  "label": "Availability Set configuration for VM-Series",
-  "elements": [
-    {
-      "name": "element1",
-      "type": "Microsoft.Common.TextBox",
-      "label": "Some text box 1"
-    },
-    {
-      "name": "element2",
-      "type": "Microsoft.Common.TextBox",
-      "label": "Some text box 2"
-    }
-  ],
-  "visible": true
-}
+      }
         ]
       }
     ],
