@@ -162,8 +162,10 @@
             },
             "options": {
                 "hideNone": false,
+                "hideDomainNameLabel": false,
 		"hideExisting" : true
-            }
+            },
+            "visible": true
           },
          { 
             "name": "UntrustdnsNameForPublicIP",
@@ -186,8 +188,10 @@
             },
             "options": {
                 "hideNone": false,
+                "hideDomainNameLabel": false,
                 "hideExisting" : true
-            }
+            },
+            "visible": true
           },
        {
         "name": "vmName",
@@ -215,7 +219,10 @@
                 "Standard_D3_v2",
                 "Standard_D4",
                 "Standard_D4_v2",
-                "Standard_A4"                  
+                "Standard_A4",
+                "Standard_D5_v2",  
+                "Standard_D14_v2",  
+                "Standard_A4"
                 ]
             },
 	    "osPlatform": "Linux",
@@ -228,8 +235,8 @@
           {
             "name": "Email",
             "type": "Microsoft.Common.TextBox",
-            "label": "Customers Email-ID",
-            "toolTip": "Customers Email-ID",
+            "label": "Customer Email-ID",
+            "toolTip": "Customer Email-ID",
             "constraints": {
                "required": true,
                "regex": "^[a-z0-9]{8,24}$",
