@@ -247,15 +247,8 @@
       },
 {
   "name": "VMSeriesConfigAS",
-  "type": "Microsoft.Common.Selector",
+  "type": "Microsoft.Common.Section",
   "label": "Availability Set configuration for VM-Series",
-  "sublabel": {
-    "prevalidation": "Before",
-    "postvalidation": "After"
-  },
-  "toolTip": "Availability Set configuration for VM-Series",
-  "bladeTitle": "Some title",
-  "bladeSubtitle": "Some subtitle",
   "elements": [
     {
       "name": "element1",
