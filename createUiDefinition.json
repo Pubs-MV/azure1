@@ -161,8 +161,32 @@
                 "domainNameLabel": ""
             },
             "options": {
-                "hideNone": true,
+                "hideNone": false,
 		"hideExisting" : true
+            }
+          },
+         { 
+            "name": "UntrustPublicIP",
+            "type": "Microsoft.Network.PublicIpAddressCombo",
+            "label": {
+                "publicIpAddress": "Public IP address",
+                "domainNameLabel": "DNS Name"
+            },
+            "constraints": {
+              "required": {
+                       "domainNameLabel": true
+                     }
+            },
+            "toolTip": {
+                "domainNameLabel": "Unique DNS name prefix for public IP of untrust interface (eth1)"
+            },
+            "defaultValue": {
+                "publicIpAddressName": "fwUntrustPublicIP",
+                "domainNameLabel": ""
+            },
+            "options": {
+                "hideNone": false,
+                "hideExisting" : true
             }
           },
        {
