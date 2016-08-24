@@ -146,7 +146,7 @@
             "type": "Microsoft.Network.PublicIpAddressCombo",
             "label": {
                 "publicIpAddress": "Public IP address",
-                "domainNameLabel": "DNS Name"
+                "domainNameLabel": "Managment interface DNS Name"
             },
             "constraints": {
               "required": {
@@ -170,7 +170,7 @@
             "type": "Microsoft.Network.PublicIpAddressCombo",
             "label": {
                 "publicIpAddress": "Untrust Public IP address",
-                "domainNameLabel": "Untrust DNS Name"
+                "domainNameLabel": "Untrust interface DNS Name"
             },
             "constraints": {
               "required": {
@@ -223,6 +223,17 @@
               "publisher": "paloaltonetworks",
               "offer": "vmseries1",
               "sku": "byol"
+            }
+          },
+          {
+            "name": "Email",
+            "type": "Microsoft.Common.TextBox",
+            "label": "Customers Email-ID",
+            "toolTip": "Customers Email-ID",
+            "constraints": {
+               "required": true,
+               "regex": "^[a-z0-9]{8,24}$",
+               "validationMessage": "Email-ID must be in the form xyz@abc.mno"
             }
           }
         ]
