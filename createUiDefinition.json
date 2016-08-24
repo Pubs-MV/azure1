@@ -247,22 +247,42 @@
       },
       {
         "name": "EnableAS",
-        "label": "Availaibility Set configuration for VM-Series",
+        "label": "ABC Availability Set configuration for VM-Series",
         "subLabel": {
-          "preValidation": "Availaibility Set configuration for VM-Series",
+          "preValidation": "XYZ Availability Set configuration for VM-Series",
           "postValidation": "Done"
         },
-        "bladeTitle": "Availaibility Set configuration for VM-Series",
+        "bladeTitle": "MNO Availability Set configuration for VM-Series",
         "elements": [
+{
+  "name": "EnableASYesOrNo",
+  "type": "Microsoft.Common.DropDown",
+  "label": "Enable Availability Sets?",
+  "defaultValue": "No",
+  "toolTip": "",
+  "constraints": {
+    "allowedValues": [
+      {
+        "label": "Yes",
+        "value": "Yes"
+      },
+      {
+        "label": "No",
+        "value": "No"
+      }
+    ]
+  },
+  "visible": true
+          },
           {
-            "name": "ASEmail",
+            "name": "ASFaultDomains",
             "type": "Microsoft.Common.TextBox",
-            "label": "Customer Email-ID",
-            "toolTip": "Customer Email-ID",
+            "label": "Number of Fault domains in the Availability Set",
+            "toolTip": "Number of Fault domains in the Availability Set",
             "constraints": {
                "required": true,
                "regex": "^[a-z0-9]{8,24}$",
-               "validationMessage": "Email-ID must be in the form xyz@abc.mno"
+               "validationMessage": "Number of Fault domains must be between 1 to 3"
             }
           }
         ]
