@@ -249,7 +249,7 @@
         "name": "EnableAS",
         "label": "Availaibility Set configuration for VM-Series"
         "subLabel": {
-          "preValidation": "Availaibility Set configuration for VM-Series"
+          "preValidation": "Availaibility Set configuration for VM-Series",
           "postValidation": "Done"
         },
         "bladeTitle": "Availaibility Set configuration for VM-Series",
