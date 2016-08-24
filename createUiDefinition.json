@@ -245,24 +245,15 @@
           }
         ]
       },
-      {
-        "name": "VMSeriesConfigAS",
-        "label": "Availability Set configuration for VM-Series",
-        "subLabel": {
-          "preValidation": "Availability Set configuration for VM-Series",
-          "postValidation": "Done"
-        },
-        "bladeTitle": "Availability Set configuration for VM-Series"
-        "elements": [
 {
-  "name": "selector1",
+  "name": "VMSeriesConfigAS",
   "type": "Microsoft.Common.Selector",
-  "label": "Some selector",
+  "label": "Availability Set configuration for VM-Series",
   "sublabel": {
     "prevalidation": "Before",
     "postvalidation": "After"
   },
-  "toolTip": "",
+  "toolTip": "Availability Set configuration for VM-Series",
   "bladeTitle": "Some title",
   "bladeSubtitle": "Some subtitle",
   "elements": [
