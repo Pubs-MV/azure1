@@ -189,7 +189,7 @@
             "options": {
                 "hideNone": false,
                 "hideDomainNameLabel": false,
-                "hideExisting" : true
+                "hideExisting" : false
             },
             "visible": true
           },
@@ -243,6 +243,42 @@
                "validationMessage": "Email-ID must be in the form xyz@abc.mno"
             }
           }
+        ]
+      },
+      {
+        "name": "VMSeriesConfigAS",
+        "label": "Availability Set configuration for VM-Series",
+        "subLabel": {
+          "preValidation": "Availability Set configuration for VM-Series",
+          "postValidation": "Done"
+        },
+        "bladeTitle": "Availability Set configuration for VM-Series"
+        "elements": [
+{
+  "name": "selector1",
+  "type": "Microsoft.Common.Selector",
+  "label": "Some selector",
+  "sublabel": {
+    "prevalidation": "Before",
+    "postvalidation": "After"
+  },
+  "toolTip": "",
+  "bladeTitle": "Some title",
+  "bladeSubtitle": "Some subtitle",
+  "elements": [
+    {
+      "name": "element1",
+      "type": "Microsoft.Common.TextBox",
+      "label": "Some text box 1"
+    },
+    {
+      "name": "element2",
+      "type": "Microsoft.Common.TextBox",
+      "label": "Some text box 2"
+    }
+  ],
+  "visible": true
+}
         ]
       }
     ],
