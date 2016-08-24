@@ -247,42 +247,55 @@
       },
       {
         "name": "EnableAS",
-        "label": "ABC Availability Set configuration for VM-Series",
+        "label": "Availability Set configuration for VM-Series",
         "subLabel": {
-          "preValidation": "XYZ Availability Set configuration for VM-Series",
+          "preValidation": "",
           "postValidation": "Done"
         },
-        "bladeTitle": "MNO Availability Set configuration for VM-Series",
+        "bladeTitle": "Availability Set configuration for VM-Series",
         "elements": [
-{
-  "name": "EnableASYesOrNo",
-  "type": "Microsoft.Common.DropDown",
-  "label": "Enable Availability Sets?",
-  "defaultValue": "No",
-  "toolTip": "",
-  "constraints": {
-    "allowedValues": [
-      {
-        "label": "Yes",
-        "value": "Yes"
-      },
-      {
-        "label": "No",
-        "value": "No"
-      }
-    ]
-  },
-  "visible": true
+         {
+            "name": "EnableASYesOrNo",
+            "type": "Microsoft.Common.DropDown",
+            "label": "Enable Availability Sets?",
+            "defaultValue": "No",
+            "toolTip": "",
+            "constraints": {
+              "allowedValues": [
+               {
+                 "label": "Yes",
+                 "value": "Yes"
+               },
+               {
+                 "label": "No",
+                 "value": "No"
+               }
+             ]
+            },
+            "visible": true
           },
           {
             "name": "ASFaultDomains",
             "type": "Microsoft.Common.TextBox",
             "label": "Number of Fault domains in the Availability Set",
             "toolTip": "Number of Fault domains in the Availability Set",
+            "defaultValue": "3",
             "constraints": {
                "required": true,
-               "regex": "^[a-z0-9]{8,24}$",
+               "regex": "[1-3]",
                "validationMessage": "Number of Fault domains must be between 1 to 3"
+            }
+          },
+          {
+            "name": "ASUpdateDomains",
+            "type": "Microsoft.Common.TextBox",
+            "label": "Number of Update domains in the Availability Set",
+            "toolTip": "Number of Update domains in the Availability Set",
+            "defaultValue": "5",
+            "constraints": {
+               "required": true,
+               "regex": "[1-20]",
+               "validationMessage": "Number of Update domains must be between 1 to 20"
             }
           }
         ]
