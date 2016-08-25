@@ -163,7 +163,7 @@
             "options": {
                 "hideNone": false,
                 "hideDomainNameLabel": false,
-		"hideExisting" : true
+		"hideExisting" : false
             },
             "visible": true
           },
